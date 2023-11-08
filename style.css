@@ -1,0 +1,70 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1f1f1f;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2em 0;
+}
+
+h1 {
+    margin-bottom: 1em;
+    color: white;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(4, 100px);
+    gap: 2px;
+}
+
+.grid-item {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.tool {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+    background-color: rgb(78, 14, 67);
+    border-radius: 2em;
+}
+
+.inventory {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+}
+
+.color-square {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.counter {
+    text-align: center;
+
+    margin: 0.3em;
+}
+
+.counter>span {
+    margin: 0.3em;
+}
