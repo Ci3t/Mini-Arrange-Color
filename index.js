@@ -6,6 +6,7 @@ const whiteboard = document.getElementById("whiteboard");
 const redSquare = document.getElementById("red");
 const blueSquare = document.getElementById("blue");
 const greenSquare = document.getElementById("green");
+const inv = document.getElementById("inv");
 
 const redCounter = document.getElementById("red-counter");
 const blueCounter = document.getElementById("blue-counter");
@@ -17,19 +18,126 @@ const inventory = {
     blue: 0,
     green: 0,
 };
-const arrayColors = ["red", "blue", "green"]
-// Initialize the grid with random colors and update the inventory
-for (let i = 0; i < 4 * 4; i++) {
-    const gridItem = document.createElement("div");
-    gridItem.className = "grid-item";
-    grid.appendChild(gridItem);
 
-    const randomColor = arrayColors[Math.floor(Math.random() * 3)];
 
-    gridItem.style.backgroundColor = randomColor;
+// const arrayColors = ["red", "blue", "green"]
+// // Initialize the grid with random colors and update the inventory
+// for (let i = 0; i < 4 * 4; i++) {
+//     const gridItem = document.createElement("div");
+//     gridItem.className = "grid-item";
+//     grid.appendChild(gridItem);
 
+//     const randomColor = arrayColors[Math.floor(Math.random() * 3)];
+
+//     gridItem.style.backgroundColor = randomColor;
+
+// }
+
+const arrayColors = ["red", "blue", "green"];
+const numRows = 5; // Number of rows
+const numCols = 12; // Number of columns
+
+const gridSize = 100; // New size for each square in pixels
+
+function gridSizeStyle(numCols, numRows, gridSize) {
+    grid.style.display = "grid";
+    grid.style.gridTemplateColumns = `repeat(${numCols}, ${gridSize}px)`;
+    grid.style.gridTemplateRows = `repeat(${numRows}, ${gridSize}px)`;
+}
+function createDynamicGrid(numRows, numCols, gridSize, arrayColors) {
+    const gridData = [];
+
+    gridSizeStyle(numCols, numRows, gridSize)
+
+    for (let i = 0; i < numRows; i++) {
+        // const row = [];
+        for (let j = 0; j < numCols; j++) {
+            const gridItem = document.createElement("div");
+            gridItem.className = "grid-item";
+            gridItem.id = `${i}-${j}`
+            grid.appendChild(gridItem);
+            // const randomColor = arrayColors[Math.floor(Math.random() * arrayColors.length)];
+            // gridItem.style.backgroundColor = randomColor;
+
+            // row.push(randomColor);
+            gridData.push(gridItem);
+        }
+    }
+    return gridData;
+}
+const gridData = createDynamicGrid(numRows, numCols, gridSize, arrayColors);
+
+function createGridColors() {
+
+    for (let g = 0; g < gridData.length; g++) {
+
+        let [i, j] = gridData[g].getAttribute("id").split("-")
+        drawRed(Number(i), Number(j), Number(g))
+        drawBlue(Number(i), Number(j), Number(g))
+        drawGreen(Number(i), Number(j), Number(g))
+
+    }
 }
 
+createGridColors()
+
+function drawRed(i, j, g) {
+
+    if (i === 0 && j >= 0) {
+        // gridData[g].classList.add("red")
+        gridData[g].style.backgroundColor = "red"
+    }
+    if (i === 4 && j <= 11) {
+        // gridData[g].classList.add("red")
+        gridData[g].style.backgroundColor = "red"
+    }
+    if (i >= 0 && j === 0) {
+        gridData[g].style.backgroundColor = "red"
+
+    }
+    if (i >= 0 && j === 11) {
+        gridData[g].style.backgroundColor = "red"
+
+    }
+}
+function drawBlue(i, j, g) {
+
+    if (i > 0 && i < 4 && j > 0 && j < 4) {
+        // gridData[g].classList.add("red")
+        gridData[g].style.backgroundColor = "blue"
+    }
+    if (i === 2 && j === 2) {
+        // gridData[g].classList.add("red")
+        gridData[g].style.backgroundColor = "green"
+    }
+
+    if (i > 0 && i < 4 && j > 4 && j < 8) {
+        // gridData[g].classList.add("red")
+        gridData[g].style.backgroundColor = "blue"
+    }
+    if (i === 2 && j === 6) {
+        // gridData[g].classList.add("red")
+        gridData[g].style.backgroundColor = "green"
+    }
+
+}
+function drawGreen(i, j, g) {
+
+
+    if (i > 0 && i < 4 && j > 7 && j < 11) {
+        // gridData[g].classList.add("red")
+        gridData[g].style.backgroundColor = "green"
+    }
+    if (i === 2 && j === 9) {
+        // gridData[g].classList.add("red")
+        gridData[g].style.backgroundColor = "yellow"
+    }
+    if (i > 0 && i < 4 && j === 4) {
+        // gridData[g].classList.add("red")
+        gridData[g].style.backgroundColor = "yellow"
+    }
+
+}
 
 redSquare.style.backgroundColor = "red";
 blueSquare.style.backgroundColor = "blue";
@@ -59,16 +167,8 @@ tools.addEventListener("click", (e) => {
     target === "eraser" ? currentColor = "eraser" : currentColor = "whiteboard";
 
 });
-// eraser.addEventListener("click", (e) => {
 
-//     currentColor = "eraser";
-
-// });
-
-// whiteboard.addEventListener("click", () => {
-//     currentColor = "whiteboard";
-// });
-
+// ! inv event listner
 
 redSquare.addEventListener("click", (e) => {
     const clicked = e.target.id
@@ -162,3 +262,5 @@ greenSquare.addEventListener("click", () => {
 });
 
 updateCounters();
+
+

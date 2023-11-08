@@ -20,8 +20,7 @@ h1 {
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(4, 100px);
-    grid-template-rows: repeat(4, 100px);
+
     gap: 2px;
 }
 
@@ -67,4 +66,8 @@ h1 {
 
 .counter>span {
     margin: 0.3em;
+}
+
+.red {
+    background-color: red;
 }
