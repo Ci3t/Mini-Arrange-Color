@@ -170,45 +170,95 @@ tools.addEventListener("click", (e) => {
 
 // ! inv event listner
 
-redSquare.addEventListener("click", (e) => {
-    const clicked = e.target.id
-    if (clicked === 'red') {
-        removeHighLightColor(blueSquare)
-        removeHighLightColor(greenSquare)
-    }
-    highLightColor(redSquare)
+// inv.addEventListener("click", (e) => {
+//     const target = e.target.id
 
-    if (inventory.red > 0) {
-        currentColor = "red";
+//     if (target === "red") {
+//         highLightColor(redSquare)
+//         removeHighLightColor(blueSquare)
+//         removeHighLightColor(greenSquare)
+//         if (inventory.red > 0) {
+//             currentColor = "red";
+//         }
+//     }
+//     if (target === "green") {
+//         highLightColor(greenSquare)
+//         removeHighLightColor(blueSquare)
+//         removeHighLightColor(redSquare)
+//         if (inventory.green > 0) {
+//             currentColor = "green";
+//         }
+//     }
+//     if (target === "blue") {
+//         highLightColor(blueSquare)
+//         removeHighLightColor(redSquare)
+//         removeHighLightColor(greenSquare)
+//         if (inventory.blue > 0) {
+//             currentColor = "blue";
+//         }
+//     }
+// })
+function selectColor(target, colorSquare, inventoryColor) {
+    removeHighLightColor(redSquare);
+    removeHighLightColor(greenSquare);
+    removeHighLightColor(blueSquare);
+    highLightColor(colorSquare);
+
+    if (inventoryColor > 0) {
+        currentColor = target;
+    }
+}
+inv.addEventListener("click", (e) => {
+    const target = e.target.id;
+
+    if (target === "red") {
+        selectColor("red", redSquare, inventory.red);
+    } else if (target === "green") {
+        selectColor("green", greenSquare, inventory.green);
+    } else if (target === "blue") {
+        selectColor("blue", blueSquare, inventory.blue);
     }
 });
 
-blueSquare.addEventListener("click", (e) => {
-    const clicked = e.target.id
-    if (clicked === 'blue') {
-        removeHighLightColor(redSquare)
-        removeHighLightColor(greenSquare)
-    }
-    highLightColor(blueSquare)
-    if (inventory.blue > 0) {
-        currentColor = "blue";
-    }
-});
+// redSquare.addEventListener("click", (e) => {
+//     const clicked = e.target.id
+//     if (clicked === 'red') {
+//         removeHighLightColor(blueSquare)
+//         removeHighLightColor(greenSquare)
+//     }
+//     highLightColor(redSquare)
 
-greenSquare.addEventListener("click", (e) => {
-    const clicked = e.target.id
+//     if (inventory.red > 0) {
+//         currentColor = "red";
+//     }
+// });
 
-    if (clicked === 'green') {
-        removeHighLightColor(redSquare)
-        removeHighLightColor(blueSquare)
-    }
-    highLightColor(greenSquare)
+// blueSquare.addEventListener("click", (e) => {
+//     const clicked = e.target.id
+//     if (clicked === 'blue') {
+//         removeHighLightColor(redSquare)
+//         removeHighLightColor(greenSquare)
+//     }
+//     highLightColor(blueSquare)
+//     if (inventory.blue > 0) {
+//         currentColor = "blue";
+//     }
+// });
 
-    if (inventory.green > 0) {
-        currentColor = "green";
-    }
+// greenSquare.addEventListener("click", (e) => {
+//     const clicked = e.target.id
 
-});
+//     if (clicked === 'green') {
+//         removeHighLightColor(redSquare)
+//         removeHighLightColor(blueSquare)
+//     }
+//     highLightColor(greenSquare)
+
+//     if (inventory.green > 0) {
+//         currentColor = "green";
+//     }
+
+// });
 
 grid.addEventListener("click", (event) => {
     const gridItem = event.target;
