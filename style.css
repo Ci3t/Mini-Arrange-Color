@@ -16,6 +16,8 @@ body {
 h1 {
     margin-bottom: 1em;
     color: white;
+    font-family: 'Shadows Into Light', cursive;
+    border-bottom: 1px solid red;
 }
 
 .grid-container {
@@ -38,8 +40,13 @@ h1 {
     padding: 10px;
     cursor: pointer;
     color: white;
-    background-color: rgb(78, 14, 67);
+    background-color: transparent;
     border-radius: 2em;
+    border: #ccc 1px solid;
+}
+.tool:hover{
+    color: yellow;
+    border: 1px solid yellow;
 }
 
 .inventory {

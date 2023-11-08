@@ -1,36 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap"
+      rel="stylesheet"
+    />
     <title>mini Craft</title>
-</head>
-<body>
-    <h1>Arrange the Colors</h1>
+  </head>
+  <body>
+    <h1>Reorder the Colors</h1>
+    <hr />
 
     <div class="grid-container" id="grid">
-        <!-- Grid items will be added dynamically using JavaScript -->
+      <!-- Grid items will be added dynamically using JavaScript -->
     </div>
     <div class="tools" id="tools">
-        <div class="tool" id="eraser">Eraser</div>
-        <div class="tool" id="whiteboard">White Board</div>
+      <div class="tool" id="eraser">Eraser</div>
+      <div class="tool" id="whiteboard">Whiteboard</div>
     </div>
     <div class="inventory" id="inv">
-        <div class="color-square" id="red"></div>
-        <span id="red-counter">0</span>
-        <div class="color-square" id="blue"></div>
-        <span id="blue-counter">0</span>
-        <div class="color-square" id="green"></div>
-        <span id="green-counter">0</span>
+      <div class="color-square" id="red"></div>
+      <span id="red-counter">0</span>
+      <div class="color-square" id="blue"></div>
+      <span id="blue-counter">0</span>
+      <div class="color-square" id="green"></div>
+      <span id="green-counter">0</span>
     </div>
 
     <!-- <div class="counter">
          
     </div> -->
 
-    <script src="index.js">
-     
-    </script>
-</body>
+    <script src="index.js"></script>
+  </body>
 </html>
