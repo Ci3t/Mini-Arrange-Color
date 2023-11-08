@@ -17,7 +17,7 @@ const inventory = {
     green: 0,
 };
 
-
+// Initialize the grid with random colors and update the inventory
 for (let i = 0; i < 4 * 4; i++) {
     const gridItem = document.createElement("div");
     gridItem.className = "grid-item";
@@ -42,7 +42,7 @@ function updateCounters() {
 function highLightColor(color) {
     color.style.border = "yellow"
     color.style.borderStyle = "solid"
-    color.style.borderWidth = "1px"
+    color.style.borderWidth = "2px"
 }
 function removeHighLightColor(color) {
     color.style.border = "#ccc"
@@ -51,8 +51,10 @@ function removeHighLightColor(color) {
 }
 
 
-eraser.addEventListener("click", () => {
+eraser.addEventListener("click", (e) => {
+
     currentColor = "eraser";
+
 });
 
 whiteboard.addEventListener("click", () => {
@@ -62,27 +64,43 @@ whiteboard.addEventListener("click", () => {
 
 redSquare.addEventListener("click", (e) => {
     const clicked = e.target.id
-    if (clicked === 'blue' || clicked === 'green') {
-        removeHighLightColor(redSquare)
+    if (clicked === 'red') {
+        removeHighLightColor(blueSquare)
+        removeHighLightColor(greenSquare)
     }
+    highLightColor(redSquare)
 
     if (inventory.red > 0) {
         currentColor = "red";
     }
 });
 
-blueSquare.addEventListener("click", () => {
+blueSquare.addEventListener("click", (e) => {
+    const clicked = e.target.id
+    if (clicked === 'blue') {
+        removeHighLightColor(redSquare)
+        removeHighLightColor(greenSquare)
+    }
+    highLightColor(blueSquare)
     if (inventory.blue > 0) {
         currentColor = "blue";
     }
 });
 
-greenSquare.addEventListener("click", () => {
+greenSquare.addEventListener("click", (e) => {
+    const clicked = e.target.id
+
+    if (clicked === 'green') {
+        removeHighLightColor(redSquare)
+        removeHighLightColor(blueSquare)
+    }
+    highLightColor(greenSquare)
+
     if (inventory.green > 0) {
         currentColor = "green";
     }
-});
 
+});
 
 grid.addEventListener("click", (event) => {
     const gridItem = event.target;
