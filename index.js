@@ -1,5 +1,6 @@
 const grid = document.getElementById("grid");
 const eraser = document.getElementById("eraser");
+const tools = document.getElementById("tools");
 const whiteboard = document.getElementById("whiteboard");
 
 const redSquare = document.getElementById("red");
@@ -16,14 +17,15 @@ const inventory = {
     blue: 0,
     green: 0,
 };
-
+const arrayColors = ["red", "blue", "green"]
 // Initialize the grid with random colors and update the inventory
 for (let i = 0; i < 4 * 4; i++) {
     const gridItem = document.createElement("div");
     gridItem.className = "grid-item";
     grid.appendChild(gridItem);
 
-    const randomColor = ["red", "blue", "green"][Math.floor(Math.random() * 3)];
+    const randomColor = arrayColors[Math.floor(Math.random() * 3)];
+
     gridItem.style.backgroundColor = randomColor;
 
 }
@@ -51,15 +53,21 @@ function removeHighLightColor(color) {
 }
 
 
-eraser.addEventListener("click", (e) => {
+tools.addEventListener("click", (e) => {
+    const target = e.target.id
 
-    currentColor = "eraser";
+    target === "eraser" ? currentColor = "eraser" : currentColor = "whiteboard";
 
 });
+// eraser.addEventListener("click", (e) => {
 
-whiteboard.addEventListener("click", () => {
-    currentColor = "whiteboard";
-});
+//     currentColor = "eraser";
+
+// });
+
+// whiteboard.addEventListener("click", () => {
+//     currentColor = "whiteboard";
+// });
 
 
 redSquare.addEventListener("click", (e) => {
